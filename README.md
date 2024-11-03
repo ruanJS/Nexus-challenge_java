@@ -57,7 +57,7 @@ Aqui está uma imagem representando os principais diagramas da arquitetura do si
 ## 5. Vídeo Apresentando a Proposta Tecnológica 🎥
 
 Assista ao vídeo que demonstra nossa proposta tecnológica e a funcionalidade da aplicação:
-- **[Link para o vídeo](https://www.youtube.com/watch?v=B9PkPyY_2CY)** 
+- **[Link para o vídeo](https://youtu.be/d3qjxVHY7Gw)** 
 
 ---
 
