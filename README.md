@@ -1,5 +1,5 @@
 
-# Java Advanced - Sistema de Recomendação Personalizado 📚💻
+# Equipe NEXUS - Sistema de Recomendação Personalizado 📚💻
 
 ### **Documentação da Aplicação**
 
