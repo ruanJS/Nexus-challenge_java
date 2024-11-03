@@ -1,54 +1,64 @@
 package br.com.fiap.nexus.controller;
 
-import br.com.fiap.nexus.dto.CourseDTO;
 import br.com.fiap.nexus.model.Course;
 import br.com.fiap.nexus.service.CourseService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/courses")
 public class CourseController {
 
     @Autowired
     private CourseService courseService;
 
+    // Método para exibir a lista de cursos
     @GetMapping
-    public ResponseEntity<List<Course>> getAllCourses() {
-        List<Course> courses = courseService.getAllCourses();
-        return ResponseEntity.ok(courses);
+    public String listCourses(Model model) {
+        List<Course> courses = courseService.getAllCourses(); // Obtém todos os cursos
+        model.addAttribute("courses", courses);
+        return "home/home"; // Retorna o nome da página HTML (home.html)
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Course> getCourseById(@PathVariable Long id) {
-        Course course = courseService.getCourseById(id);
-        return course != null ? ResponseEntity.ok(course) : ResponseEntity.notFound().build();
+    // Método para exibir a página de adicionar curso
+    @GetMapping("/add")
+    public String showAddCourseForm(Model model) {
+        model.addAttribute("course", new Course()); // Adiciona um novo curso ao modelo
+        return "cursos/add-course"; // Retorna o nome da página HTML (add-course.html)
     }
 
+    // Método para adicionar um novo curso
     @PostMapping
-    public ResponseEntity<Course> createCourse(@Valid @RequestBody CourseDTO courseDTO) {
-        Course course = new Course();
-        course.setName(courseDTO.getName());
-        Course createdCourse = courseService.createCourse(course);
-        return ResponseEntity.ok(createdCourse);
+    public String addCourse(@ModelAttribute Course course) {
+        courseService.addCourse(course); // Adiciona o curso usando o serviço
+        return "redirect:/courses"; // Redireciona para a lista de cursos
     }
 
+    // Método para exibir a página de editar curso
+    @GetMapping("/{id}/edit")
+    public String showEditCourseForm(@PathVariable Long id, Model model) {
+        Course course = courseService.getCourseById(id); // Obtém o curso pelo ID
+        model.addAttribute("course", course);
+        return "cursos/edit-course"; // Retorna o nome da página HTML (edit-course.html)
+    }
+
+    // Método para editar um curso
     @PutMapping("/{id}")
-    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @Valid @RequestBody CourseDTO courseDTO) {
-        Course course = new Course();
-        course.setId(id);
-        course.setName(courseDTO.getName());
-        Course updatedCourse = courseService.updateCourse(id, course);
-        return ResponseEntity.ok(updatedCourse);
+    public String updateCourse(@PathVariable Long id, @ModelAttribute Course course) {
+        courseService.updateCourse(id, course); // Atualiza o curso usando o serviço
+        return "redirect:/courses"; // Redireciona para a lista de cursos
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {
-        courseService.deleteCourse(id);
-        return ResponseEntity.noContent().build();
+    // (Opcional) Método para exibir meus cursos
+    @GetMapping("/my")
+    public String listMyCourses(Model model) {
+        // Aqui você pode filtrar os cursos de acordo com o usuário logado
+        List<Course> myCourses = courseService.getMyCourses(); // Método hipotético para obter cursos do usuário
+        model.addAttribute("myCourses", myCourses);
+        return "cursos/my-courses"; // Retorna o nome da página HTML (my-courses.html)
     }
 }

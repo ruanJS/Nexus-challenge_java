@@ -1,0 +1,226 @@
+GET http://localhost:8080/home
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193758.200.html
+
+###
+
+GET http://localhost:8080/form
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193754.200.html
+
+###
+
+POST http://localhost:8080/auth/signup
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193753.200.html
+
+###
+
+GET http://localhost:8080/auth/signup
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193751.200.html
+
+###
+
+POST http://localhost:8080/auth/login
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193749.200.html
+
+###
+
+GET http://localhost:8080/auth/login
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193747.200.html
+
+###
+
+GET http://localhost:8080/courses/my
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193741.200.html
+
+###
+
+GET http://localhost:8080/courses
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193736.200.html
+
+###
+
+POST http://localhost:8080/courses
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193733.200.html
+
+###
+
+GET http://localhost:8080/courses/my
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193728.200.html
+
+###
+
+GET http://localhost:8080/courses/my
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193720.200.html
+
+###
+
+GET http://localhost:8080/courses/add
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=C70A02E087136EBCE95A7AA802696B94
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T193654.200.html
+
+###
+
+GET http://localhost:8080/courses/add
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=DC5C9D9F5072563B818D624C7ACDBFA3
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T190000.200.html
+
+###
+
+GET http://localhost:8080/courses/my
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=DC5C9D9F5072563B818D624C7ACDBFA3
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T185952.200.html
+
+###
+
+GET http://localhost:8080/courses/my
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=DC5C9D9F5072563B818D624C7ACDBFA3
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T185929.200.html
+
+###
+
+POST http://localhost:8080/sending-email
+Content-Type: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=DC5C9D9F5072563B818D624C7ACDBFA3
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "ownerRef": "",
+  "emailFrom": "",
+  "emailTo": "",
+  "subject": "",
+  "text": ""
+}
+
+<> 2024-11-03T185854.200.html
+
+###
+
+GET http://localhost:8080/emails
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=DC5C9D9F5072563B818D624C7ACDBFA3
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T185843.200.html
+
+###
+
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=DC5C9D9F5072563B818D624C7ACDBFA3
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "id": 0,
+  "username": "",
+  "password": "",
+  "email": ""
+}
+
+<> 2024-11-03T185841.200.html
+
+###
+
+GET http://localhost:8080/home
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=DC5C9D9F5072563B818D624C7ACDBFA3
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T185837.200.html
+
+###
+
+POST http://localhost:8080/auth/login
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Cookie: JSESSIONID=DC5C9D9F5072563B818D624C7ACDBFA3
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T185828.200.html
+
+###
+
+GET http://localhost:8080/auth/login
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-11-03T185821.200.html
+
+###
+
