@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Deleção</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<header>
+    <h1>Deletar Curso</h1>
+</header>
+
+<body>
+<div class="container">
+    <h1>Tem certeza que deseja deletar o curso <span th:text="${course.name}"></span>?</h1>
+    <form th:action="@{/courses/delete/{id}(id=${course.id})}" method="post">
+        <button type="submit" class="btn btn-danger">Sim</button>
+    </form>
+    <a href="/courses/list" class="btn btn-cancel">Cancelar</a>
+</div>
+<footer>
+    <p>&copy; 2024 Plataforma de Cursos</p>
+</footer>
+</body>
+</html>

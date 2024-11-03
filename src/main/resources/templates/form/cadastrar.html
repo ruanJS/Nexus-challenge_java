@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${titulo}">Formulário de Cursos</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+<header>
+  <h1>Cadastrar Curso</h1>
+</header>
+
+<div class="form-container">
+  <h1 th:text="${titulo}">Formulário de Curso</h1>
+  <form th:action="@{/courses}" th:object="${courseDTO}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="courseName">Nome do Curso:</label>
+    <input type="text" id="courseName" th:field="*{name}" required/><br/>
+
+    <button  type="submit">Salvar</button>
+  </form>
+  <br>
+  <a th:href="@{/courses/list}" class="btn btn-cancel">Voltar para a Lista</a>
+</div>
+
+<footer>
+  <p>&copy; 2024 Plataforma de Cursos</p>
+</footer>
+</body>
+</html>

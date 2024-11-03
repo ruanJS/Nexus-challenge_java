@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Cursos</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Lista de Cursos</h1>
+
+<!-- Exibe a mensagem de sucesso, se existir -->
+<div th:if="${message}" class="alert alert-success">
+  <p th:text="${message}"></p>
+</div>
+
+<!-- Link para cadastrar um novo curso -->
+<div>
+  <a th:href="@{/courses/form}">Cadastrar Novo Curso</a>
+</div>
+
+<!-- Lista de cursos -->
+<ul>
+  <li th:each="course : ${courses}">
+    <span th:text="${course.name}">Nome do Curso</span>
+    <a th:href="@{/courses/{id}(id=${course.id})}">Detalhes</a>
+    <a th:href="@{/courses/edit/{id}(id=${course.id})}">Editar</a>
+    <a th:href="@{/courses/delete/{id}(id=${course.id})}">Deletar</a>
+  </li>
+</ul>
+</body>
+</html>

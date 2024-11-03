@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar - DataTech</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Nexus</h1>
+</header>
+
+<main class="container">
+    <div class="form-container">
+        <div class="form-section" id="signup-section">
+            <h2>Registrar Conta</h2>
+            <form action="/auth/signup" method="post">
+                <div>
+                    <label>Nome:</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div>
+                    <label>E-mail:</label>
+                    <input type="email" name="email" required> <!-- O nome do campo deve ser "email" -->
+                </div>
+                <div>
+                    <label>Senha:</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div>
+                    <button type="submit">Registrar</button>
+                </div>
+            </form>
+            <div>
+                <p>Já tem uma conta? <a href="/auth/login" class="btn">Faça login aqui</a></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 <em>NEXUS</em>. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
