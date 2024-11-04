@@ -11,21 +11,27 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
-@Table(name = "courses")
+@Table(name = "t_courses")
 public class Course {
 
     // Getters e Setters
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "courses_seq")
-    @SequenceGenerator(name = "courses_seq", sequenceName = "courses_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_seq")
+    @SequenceGenerator(name = "course_seq", sequenceName = "course_seq", allocationSize = 1)
     private Long id;
 
     @NotNull
     private String name;
 
+    @NotNull
+    private int duration;  // Duração do curso em horas, dias, etc. (conforme necessário)
+
+    @Column(length = 1000)
+    private String description;  // Descrição detalhada do curso
+
     @ManyToMany
     @JoinTable(
-            name = "user_courses",
+            name = "course_name",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )

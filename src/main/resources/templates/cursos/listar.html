@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Cursos</title>
+</head>
+<body>
+<h1>Lista de Cursos</h1>
+<ul>
+  <li th:each="course : ${courses}">
+    <span th:text="${course.name}"></span>
+    <a th:href="@{'/courses/' + ${course.id} + '/edit'}">Editar</a>
+    <a th:href="@{'/courses/' + ${course.id} + '/delete'}">Excluir</a>
+  </li>
+</ul>
+<a href="/courses/add">Adicionar Curso</a>
+</body>
+</html>

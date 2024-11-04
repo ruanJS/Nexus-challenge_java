@@ -1,52 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Courses</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Gerenciar Cursos</title>
 </head>
+
 <body>
-<h2>Courses</h2>
+<header>
+    <h1>Gerenciar Cursos</h1>
+</header>
 
 <!-- List Courses -->
-<div id="course-list">
-    <h3>Available Courses</h3>
-    <!-- Example of a course entry -->
-    <div class="course">
-        <p><strong>Course Name:</strong> Example Course</p>
-        <p><strong>Description:</strong> Description of the course</p>
-        <button onclick="editCourse(1)">Edit</button>
-        <button onclick="deleteCourse(1)">Delete</button>
+<div id="course-list" class="container">
+    <h2>Cursos Disponíveis</h2>
+    <div th:each="course : ${courses}" class="course">
+        <p><strong>Nome do Curso:</strong> <span th:text="${course.name}"></span></p>
+        <p><strong>Descrição:</strong> <span th:text="${course.description}"></span></p>
+        <button th:onclick="'editCourse(' + ${course.id} + ')'" class="btn btn-edit">Editar</button>
+        <button th:onclick="'deleteCourse(' + ${course.id} + ')'" class="btn btn-danger">Deletar</button>
     </div>
 </div>
 
 <!-- Add Course Form -->
-<h3>Add New Course</h3>
-<form action="/courses" method="POST">
-    <label for="courseName">Course Name:</label>
-    <input type="text" id="courseName" name="courseName" required><br>
+<div class="form-container">
+    <h2>Adicionar Novo Curso</h2>
+    <form th:action="@{/courses}" method="post">
+        <label for="courseName">Nome do Curso:</label>
+        <input type="text" id="courseName" name="name" required><br/>
 
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea><br>
+        <label for="description">Descrição:</label>
+        <textarea id="description" name="description" rows="4" maxlength="1000" required></textarea><br/>
 
-    <button type="submit">Add Course</button>
-</form>
-
-<!-- Edit Course Modal -->
-<div id="edit-course-modal" style="display: none;">
-    <h3>Edit Course</h3>
-    <form action="/courses/{id}" method="POST">
-        <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" id="edit-course-id" name="id">
-
-        <label for="editCourseName">Course Name:</label>
-        <input type="text" id="editCourseName" name="courseName" required><br>
-
-        <label for="editDescription">Description:</label>
-        <textarea id="editDescription" name="description" required></textarea><br>
-
-        <button type="submit">Save Changes</button>
+        <button type="submit" class="btn btn-submit">Adicionar Curso</button>
     </form>
 </div>
+
+<!-- Edit Course Modal -->
+<div id="edit-course-modal" style="display: none;" class="modal">
+    <div class="modal-content">
+        <h2>Editar Curso</h2>
+        <form th:action="@{/courses/{id}(id=${course.id})}" method="post">
+            <input type="hidden" name="_method" value="put">
+            <input type="hidden" id="edit-course-id" th:value="${course.id}" name="id">
+
+            <label for="editCourseName">Nome do Curso:</label>
+            <input type="text" id="editCourseName" name="name" th:value="${course.name}" required><br/>
+
+            <label for="editDescription">Descrição:</label>
+            <textarea id="editDescription" name="description" rows="4" maxlength="1000" th:text="${course.description}" required></textarea><br/>
+
+            <button type="submit" class="btn btn-submit">Salvar Alterações</button>
+            <button type="button" onclick="closeModal()" class="btn btn-cancel">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Plataforma de Cursos</p>
+</footer>
+
+<script>
+    function editCourse(id) {
+        document.getElementById("edit-course-id").value = id;
+        // Fetch course data by ID here and populate form fields if needed.
+        document.getElementById("edit-course-modal").style.display = "block";
+    }
+
+    function deleteCourse(id) {
+        if (confirm("Tem certeza que deseja deletar este curso?")) {
+            // Redirect to delete course endpoint
+            window.location.href = `/courses/delete/${id}`;
+        }
+    }
+
+    function closeModal() {
+        document.getElementById("edit-course-modal").style.display = "none";
+    }
+</script>
 </body>
 </html>

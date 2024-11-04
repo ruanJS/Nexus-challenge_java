@@ -10,8 +10,8 @@
 <header>
     <h1>Bem-vindo ao Sistema de Cursos</h1>
     <div class="btn-group">
-        <a class="btn" href="add-course.html">Adicionar Curso</a>
-        <a class="btn" href="my-courses.html">Meus Cursos</a>
+        <a class="btn" href="/courses/cadastrar">Adicionar Curso</a>
+        <a class="btn" href="/courses/my">Meus Cursos</a>
     </div>
 </header>
 
@@ -25,12 +25,21 @@
             <th>Ações</th>
         </tr>
         </thead>
-        <tbody id="course-list">
-        <!-- Os cursos serão carregados aqui via JavaScript ou Thymeleaf -->
+        <tbody>
+        <!-- Usando Thymeleaf para carregar a lista de cursos -->
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.id}">ID</td>
+            <td th:text="${course.name}">Nome do Curso</td>
+            <td>
+                <a th:href="@{/courses/{id}/edit(id=${course.id})}" class="btn">Editar</a>
+                <a th:href="@{/courses/deletar/{id}(id=${course.id})}" class="btn">Deletar</a>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>
-<a class="btn" href="/home">Página Inicial</a>
+
+<a class="btn" href="/">Página Inicial</a>
 
 <footer>
     <p>&copy; 2024 Sistema de Cursos</p>

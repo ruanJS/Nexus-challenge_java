@@ -1,34 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Meus Cursos</title>
 </head>
 <body>
-<header>
-    <h1>Meus Cursos</h1>
-</header>
-
-<div class="container">
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome do Curso</th>
-            <th>Ações</th>
-        </tr>
-        </thead>
-        <tbody id="my-courses-list">
-        <!-- Os cursos do usuário serão carregados aqui via JavaScript ou Thymeleaf -->
-        </tbody>
-    </table>
-</div>
-<a class="btn" href="/home">Página Inicial</a>
-
-<footer>
-    <p>&copy; 2024 Sistema de Cursos</p>
-</footer>
+<h1>Meus Cursos</h1>
+<ul>
+    <li th:each="course : ${myCourses}">
+        <span th:text="${course.name}"></span>
+    </li>
+</ul>
 </body>
 </html>

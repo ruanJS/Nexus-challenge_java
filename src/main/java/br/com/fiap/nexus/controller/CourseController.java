@@ -7,7 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/courses")
@@ -16,49 +19,79 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    // Método para exibir a lista de cursos
+    // Exibir lista de cursos
     @GetMapping
     public String listCourses(Model model) {
-        List<Course> courses = courseService.getAllCourses(); // Obtém todos os cursos
+        List<Course> courses = courseService.getAllCourses();
         model.addAttribute("courses", courses);
-        return "home/home"; // Retorna o nome da página HTML (home.html)
+        return "cursos/listar"; // Nome do arquivo HTML para listar os cursos
     }
 
-    // Método para exibir a página de adicionar curso
-    @GetMapping("/add")
+    // Exibir página de adicionar curso
+    @GetMapping("/cadastrar")
     public String showAddCourseForm(Model model) {
-        model.addAttribute("course", new Course()); // Adiciona um novo curso ao modelo
-        return "cursos/add-course"; // Retorna o nome da página HTML (add-course.html)
+        model.addAttribute("course", new Course());
+        model.addAttribute("titulo", "Cadastrar Curso");
+        return "cursos/cadastrar"; // Nome do template HTML do formulário de cadastro
     }
 
-    // Método para adicionar um novo curso
-    @PostMapping
-    public String addCourse(@ModelAttribute Course course) {
-        courseService.addCourse(course); // Adiciona o curso usando o serviço
-        return "redirect:/courses"; // Redireciona para a lista de cursos
+    // Salvar novo curso
+    @PostMapping("/cadastrar")
+    public String saveCourse(@ModelAttribute("course") @Valid Course course, BindingResult result) {
+        if (result.hasErrors()) {
+            return "cursos/cadastrar"; // Retorna à página de cadastro se houver erros
+        }
+        courseService.addCourse(course);
+        return "redirect:/courses"; // Redireciona para a lista de cursos após salvar
     }
 
-    // Método para exibir a página de editar curso
+    // Exibir página de edição de curso
     @GetMapping("/{id}/edit")
     public String showEditCourseForm(@PathVariable Long id, Model model) {
-        Course course = courseService.getCourseById(id); // Obtém o curso pelo ID
-        model.addAttribute("course", course);
-        return "cursos/edit-course"; // Retorna o nome da página HTML (edit-course.html)
+        Optional<Course> course = courseService.getCourseById(id);
+        if (course.isPresent()) {
+            model.addAttribute("course", course.get());
+            return "cursos/editar";
+        } else {
+            return "error/404"; // Página de erro caso o curso não seja encontrado
+        }
     }
 
-    // Método para editar um curso
-    @PutMapping("/{id}")
-    public String updateCourse(@PathVariable Long id, @ModelAttribute Course course) {
-        courseService.updateCourse(id, course); // Atualiza o curso usando o serviço
-        return "redirect:/courses"; // Redireciona para a lista de cursos
+    // Editar curso existente
+    @PostMapping("/{id}/edit")
+    public String updateCourse(@PathVariable Long id, @ModelAttribute @Valid Course course, BindingResult result) {
+        if (result.hasErrors()) {
+            course.setId(id);
+            return "cursos/editar";
+        }
+        courseService.updateCourse(id, course);
+        return "redirect:/courses";
     }
 
-    // (Opcional) Método para exibir meus cursos
+    // Exibir meus cursos
     @GetMapping("/my")
     public String listMyCourses(Model model) {
-        // Aqui você pode filtrar os cursos de acordo com o usuário logado
-        List<Course> myCourses = courseService.getMyCourses(); // Método hipotético para obter cursos do usuário
+        List<Course> myCourses = courseService.getMyCourses();
         model.addAttribute("myCourses", myCourses);
-        return "cursos/my-courses"; // Retorna o nome da página HTML (my-courses.html)
+        return "cursos/my-courses";
+    }
+
+    // Exibir confirmação de exclusão do curso
+    @GetMapping("/{id}/delete")
+    public String confirmDeleteCourse(@PathVariable Long id, Model model) {
+        Optional<Course> course = courseService.getCourseById(id);
+        if (course.isPresent()) {
+            model.addAttribute("course", course.get());
+            return "cursos/deletar";
+        } else {
+            return "error/404";
+        }
+    }
+
+    // Excluir curso
+    @PostMapping("/{id}/delete")
+    public String deleteCourse(@PathVariable Long id) {
+        courseService.deleteCourse(id);
+        return "redirect:/courses";
     }
 }
