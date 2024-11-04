@@ -65,19 +65,91 @@ Assista ao vídeo que demonstra nossa proposta tecnológica e a funcionalidade d
 
 Abaixo estão os principais endpoints da API disponíveis para interação com o sistema:
 
-- **POST /users** - *http://localhost:8080/users* (Criar usuário)
-- **GET /users/new** - *http://localhost:8080/users/new* (Buscar novo usuário)
-- **PUT /api/users/{id}** - *http://localhost:8080/api/users/{id}* (Atualizar um usuário pelo ID)
-- **DELETE /api/users/{id}** - *http://localhost:8080/api/users/{id}* (Deletar um usuário pelo ID)
-- **GET /api/users/{id}** - *http://localhost:8080/api/users/{id}* (Buscar um usuário pelo ID)
-- **POST /api/users** - *http://localhost:8080/api/users* (Criar um usuário)
-- **GET /api/users** - *http://localhost:8080/api/users* (Listar todos os usuários)
-- **PUT /courses/{id}** - *http://localhost:8080/courses/{id}* (Atualizar um curso pelo ID)
-- **DELETE /courses/{id}** - *http://localhost:8080/courses/{id}* (Deletar um curso pelo ID)
-- **GET /courses/{id}** - *http://localhost:8080/courses/{id}* (Buscar um curso pelo ID)
-- **POST /courses** - *http://localhost:8080/courses* (Criar um curso)
-- **GET /courses** - *http://localhost:8080/courses* (Listar todos os cursos)
+### Endpoints para Usuários
+- **Criar Usuário**
+  - **POST** `/users` 
+    - *URL:* [http://localhost:8080/users](http://localhost:8080/users)
+  
+- **Buscar Novo Usuário**
+  - **GET** `/users/new` 
+    - *URL:* [http://localhost:8080/users/new](http://localhost:8080/users/new)
 
+- **Atualizar Usuário pelo ID**
+  - **PUT** `/api/users/{id}` 
+    - *URL:* [http://localhost:8080/api/users/{id}](http://localhost:8080/api/users/{id})
+
+- **Deletar Usuário pelo ID**
+  - **DELETE** `/api/users/{id}` 
+    - *URL:* [http://localhost:8080/api/users/{id}](http://localhost:8080/api/users/{id})
+
+- **Buscar Usuário pelo ID**
+  - **GET** `/api/users/{id}` 
+    - *URL:* [http://localhost:8080/api/users/{id}](http://localhost:8080/api/users/{id})
+
+- **Listar Todos os Usuários**
+  - **GET** `/api/users` 
+    - *URL:* [http://localhost:8080/api/users](http://localhost:8080/api/users)
+
+### Endpoints para Cursos
+- **Atualizar Curso pelo ID**
+  - **PUT** `/courses/{id}` 
+    - *URL:* [http://localhost:8080/courses/{id}](http://localhost:8080/courses/{id})
+
+- **Deletar Curso pelo ID**
+  - **DELETE** `/courses/{id}` 
+    - *URL:* [http://localhost:8080/courses/{id}](http://localhost:8080/courses/{id})
+
+- **Buscar Curso pelo ID**
+  - **GET** `/courses/{id}` 
+    - *URL:* [http://localhost:8080/courses/{id}](http://localhost:8080/courses/{id})
+
+- **Exibir Página para Editar Curso**
+  - **GET** `/courses/{id}/edit` 
+    - *URL:* [http://localhost:8080/courses/{id}/edit](http://localhost:8080/courses/{id}/edit)
+
+- **Criar Curso**
+  - **POST** `/courses` 
+    - *URL:* [http://localhost:8080/courses](http://localhost:8080/courses)
+
+- **Listar Todos os Cursos**
+  - **GET** `/courses` 
+    - *URL:* [http://localhost:8080/courses](http://localhost:8080/courses)
+
+- **Mostrar o Formulário para Adicionar um Curso**
+  - **GET** `/courses/add` 
+    - *URL:* [http://localhost:8080/courses/add](http://localhost:8080/courses/add)
+
+- **Enviar o Formulário para Adicionar um Curso**
+  - **POST** `/courses/add` 
+    - *URL:* [http://localhost:8080/courses/add](http://localhost:8080/courses/add)
+
+- **Listar os Cursos do Usuário Logado**
+  - **GET** `/courses/my` 
+    - *URL:* [http://localhost:8080/courses/my](http://localhost:8080/courses/my)
+
+## Tecnologias Utilizadas
+- Spring Framework
+- Spring Boot Security
+- Spring Actuator
+- Loombok
+- Lambda
+- Oracle DB
+- RabbitMQ
+- Spring Boot
+- Thymeleaf (para templates HTML)
+
+## Como Executar o Projeto
+1. Certifique-se de que o Maven ou Gradle está instalado.
+2. Clone o repositório.
+3. Navegue até o diretório do projeto.
+4. Execute `mvn spring-boot:run` ou `gradle bootRun` para iniciar o servidor.
+5. Acesse o sistema pelo navegador em [http://localhost:8080](http://localhost:8080).
+
+## Contribuição
+Sinta-se à vontade para contribuir com melhorias ou correções. 
+
+## Licença
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 ---
 
 ### Fique à vontade para contribuir ou reportar problemas diretamente no repositório! 🚀
