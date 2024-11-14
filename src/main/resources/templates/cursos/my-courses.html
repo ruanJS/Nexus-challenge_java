@@ -2,14 +2,41 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Meus Cursos</title>
 </head>
 <body>
-<h1>Meus Cursos</h1>
-<ul>
-    <li th:each="course : ${myCourses}">
-        <span th:text="${course.name}"></span>
-    </li>
-</ul>
+<header>
+    <h1>Meus Cursos</h1>
+</header>
+
+<div class="container">
+    <h2>Lista dos Meus Cursos</h2>
+    <p>Esses são os cursos que você está inscrito.</p>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome do Curso</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="course : ${myCourses}">
+            <td th:text="${course.id}">ID</td>
+            <td th:text="${course.name}">Nome do Curso</td>
+            <td>
+                <a th:href="@{/courses/editar(id=${course.id})}" class="btn">Editar</a>
+                <a th:href="@{/courses/delete(id=${course.id})}" class="btn">Deletar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <p>&copy; 2024 Sistema de Cursos</p>
+</footer>
 </body>
 </html>

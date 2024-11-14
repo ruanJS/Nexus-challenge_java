@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,8 @@
 </header>
 
 <div class="container">
+    <h2>Lista dos Meus Cursos</h2>
+    <p>Esses são os cursos que você está inscrito.</p>
     <table>
         <thead>
         <tr>
@@ -20,12 +22,18 @@
             <th>Ações</th>
         </tr>
         </thead>
-        <tbody id="my-courses-list">
-        <!-- Os cursos do usuário serão carregados aqui via JavaScript ou Thymeleaf -->
+        <tbody>
+        <tr th:each="course : ${myCourses}">
+            <td th:text="${course.id}">ID</td>
+            <td th:text="${course.name}">Nome do Curso</td>
+            <td>
+                <a th:href="@{/courses/editar(id=${course.id})}" class="btn">Editar</a>
+                <a th:href="@{/courses/delete(id=${course.id})}" class="btn">Deletar</a>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>
-<a class="btn" href="/home">Página Inicial</a>
 
 <footer>
     <p>&copy; 2024 Sistema de Cursos</p>

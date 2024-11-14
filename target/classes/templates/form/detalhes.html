@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalhes do Curso</title>
   <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
@@ -8,15 +10,21 @@
 <header>
   <h1>Detalhes do Curso</h1>
 </header>
+
 <main class="container">
   <div class="main-content">
-    <p>ID: <span th:text="${course.id}"></span></p>
-    <p>Nome do Curso: <span th:text="${course.name}"></span></p>
-    <a class="btn btn-cancel" href="/courses/list">Voltar à Lista</a>
+    <p><strong>ID:</strong> <span th:text="${course.id}"></span></p>
+    <p><strong>Nome do Curso:</strong> <span th:text="${course.name}"></span></p>
+    <p><strong>Duração:</strong> <span th:text="${course.duration}"></span> horas</p>
+    <p><strong>Descrição:</strong> <span th:text="${course.description}"></span></p>
+    <br/>
+    <a th:href="@{/courses}" class="btn btn-cancel">Voltar para a Lista</a>
   </div>
 </main>
+
 <footer>
-  <p>&copy; 2024 Plataforma de Cursos. Todos os direitos reservados.</p>
+  <p>&copy; 2024 Plataforma de Cursos</p>
 </footer>
 </body>
 </html>
+``
