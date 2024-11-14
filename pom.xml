@@ -16,7 +16,7 @@
 	<description>Sistema de Recomendação de Projetos com Spring Boot</description>
 
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 		<jakarta.persistence.version>3.1.0</jakarta.persistence.version>
 	</properties>
 
